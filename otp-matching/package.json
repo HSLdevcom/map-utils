@@ -1,0 +1,15 @@
+{
+  "name": "otp-matching",
+  "version": "1.0.0",
+  "description": "Parses logs from OpenTripPlanner build into csv files usable for improving OSM and GTFS data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HSLdevcom/map-utils/tree/master/otp-matching"
+  },
+  "author": "HSLdevcom",
+  "license": "ISC"
+}
