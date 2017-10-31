@@ -4,7 +4,7 @@ const fetch = require("node-fetch")
 const https = require("https")
 
 const UNCONNECTED = /Could not connect ([A-Z]?[a-z]?\d{4}) at \((\d+\.\d+), (\d+\.\d+)/;
-const CONNECTED = /Connected <.*:(\d*) lat,lng=(\d+\.\d+),(\d+\.\d+)> \(([A-Z]?[a-z]?\d{4})\) at \(\d+\.\d+, \d+\.\d+, NaN\) to (.*) at \((\d+\.\d+), (\d+\.\d+)/;
+const CONNECTED = /Connected <.*:(\d*) lat,lng=(\d+\.\d+),(\d+\.\d+)> \(([A-Z]?[a-z]?\d{4})\) to (.*) at \((\d+\.\d+), (\d+\.\d+)/;
 
 const query = `
   query Stops($stop_code: String!) {
