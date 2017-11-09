@@ -29,14 +29,14 @@ function distance(lat1, lon1, lat2, lon2) {
   return 12742 * 1000 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
 
-async function match(line, connectedStream, unconnectedStream) {
+async function match(line, connectedStream, unconnectedStream, router) {
   let res = UNCONNECTED.exec(line);
   if (res != null) {
     const [stop_code, jore_lon, jore_lat] = res.slice(1);
     let departures;
     try {
       const fetchData = await fetch(
-        "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql",
+        `https://api.digitransit.fi/routing/v1/routers/${router}/index/graphql`,
         {
           body: JSON.stringify({ query, variables: { stop_code } }),
           headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -68,7 +68,7 @@ async function match(line, connectedStream, unconnectedStream) {
   }
 }
 
-module.exports = function parse(directory) {
+module.exports = function parse(directory, router = "finland") {
   return new Promise(resolve => {
     const promises = [];
 
@@ -84,7 +84,7 @@ module.exports = function parse(directory) {
     });
 
     rl.on("line", line => {
-      promises.push(match(line, connectedStream, unconnectedStream));
+      promises.push(match(line, connectedStream, unconnectedStream, router));
     });
 
     rl.on("close", () => {
