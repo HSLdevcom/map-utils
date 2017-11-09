@@ -1,6 +1,6 @@
 {
   "name": "otp-matching",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Parses logs from OpenTripPlanner build into csv files usable for improving OSM and GTFS data",
   "main": "index.js",
   "scripts": {
